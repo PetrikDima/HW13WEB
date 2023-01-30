@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>LeadSite</title>
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+</head>
+<body>
+<main class="container">
+    <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+            <li><a href="{{ back }}" role="button" class="secondary">Go back</a></li>
+        </ul>
+        <ul>
+            <li>
+                <label>Find by date:
+                    <input type="text" name="sum" required/>
+                </label>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button type="submit">Amount by growth</button>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button type="submit">Amount due</button>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button type="submit">Date by growth</button>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button type="submit">Date due</button>
+            </li>
+        </ul>
+    </nav>
+    <h1 style="text-align: center">Expenses</h1>
+    {% if expenses %}
+        {% for expense in expenses %}
+            <p>Name: <b>{{ expense.user_id }}</b></p>
+            <p>Sum: <b>{{ expense.sum }}</b></p>
+            <p>Category: <b>{{ expense.good_expense.goods_expenses }}</b></p>
+            <p>Date: <b>{{ expense.time_expenses }}</b></p>
+            <p style="border-bottom: 2px solid"></p>
+        {% endfor %}
+    {% else %}
+    {% endif %}
+</main>
+</body>
+</html>
