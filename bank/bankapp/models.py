@@ -1,4 +1,3 @@
-from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -11,7 +10,7 @@ class Goods(models.Model):
 class Savings(models.Model):
     sum = models.IntegerField()
     good_savings = models.ForeignKey(Goods, on_delete=models.CASCADE, default='')
-    time_saving = models.DateTimeField(default=datetime.now())
+    time_saving = models.DateTimeField(auto_now_add=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=True)
 
     def __str__(self):
@@ -21,7 +20,7 @@ class Savings(models.Model):
 class Expenses(models.Model):
     sum = models.IntegerField()
     good_expense = models.ForeignKey(Goods, on_delete=models.CASCADE, default='')
-    time_expenses = models.DateTimeField(default=datetime.now())
+    time_expenses = models.DateTimeField(auto_now_add=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=True)
 
     def __str__(self):
